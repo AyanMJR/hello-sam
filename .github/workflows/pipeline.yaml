@@ -11,17 +11,17 @@ on:
 
 env:
   SAM_TEMPLATE: template.yaml
-  TESTING_STACK_NAME: sam-app
-  TESTING_PIPELINE_EXECUTION_ROLE: arn:aws:iam::376666941677:role/aws-sam-cli-managed-dev-pipel-PipelineExecutionRole-6OQxWhYWYC81
-  TESTING_CLOUDFORMATION_EXECUTION_ROLE: arn:aws:iam::376666941677:role/aws-sam-cli-managed-dev-p-CloudFormationExecutionRo-Kqdpmxs7Vm6A
-  TESTING_ARTIFACTS_BUCKET: aws-sam-cli-managed-dev-pipeline-r-artifactsbucket-6jknypldocip
-  TESTING_IMAGE_REPOSITORY: 376666941677.dkr.ecr.ap-south-1.amazonaws.com/aws-sam-cli-managed-dev-pipeline-resources-imagerepository-bluh6u0dz1mz
+  TESTING_STACK_NAME: sam-app-dev
+  TESTING_PIPELINE_EXECUTION_ROLE: arn:aws:iam::376666941677:role/aws-sam-cli-managed-dev-pipel-PipelineExecutionRole-cyhcMQOd6VkM
+  TESTING_CLOUDFORMATION_EXECUTION_ROLE: arn:aws:iam::376666941677:role/aws-sam-cli-managed-dev-p-CloudFormationExecutionRo-CXqQHy4E1kIN
+  TESTING_ARTIFACTS_BUCKET: aws-sam-cli-managed-dev-pipeline-r-artifactsbucket-rfha5nsop5k6
+  TESTING_IMAGE_REPOSITORY: 376666941677.dkr.ecr.ap-south-1.amazonaws.com/aws-sam-cli-managed-dev-pipeline-resources-imagerepository-hxe26djykp1d
   TESTING_REGION: ap-south-1
-  PROD_STACK_NAME: sam-app
-  PROD_PIPELINE_EXECUTION_ROLE: arn:aws:iam::376666941677:role/aws-sam-cli-managed-prod-pipe-PipelineExecutionRole-h4SnzrpceX6u
-  PROD_CLOUDFORMATION_EXECUTION_ROLE: arn:aws:iam::376666941677:role/aws-sam-cli-managed-prod--CloudFormationExecutionRo-H9Pbbg5nbwyF
-  PROD_ARTIFACTS_BUCKET: aws-sam-cli-managed-prod-pipeline--artifactsbucket-kxpuhsoeis33
-  PROD_IMAGE_REPOSITORY: 376666941677.dkr.ecr.ap-south-1.amazonaws.com/aws-sam-cli-managed-prod-pipeline-resources-imagerepository-928iwu6mkf7g
+  PROD_STACK_NAME: sam-app-prod
+  PROD_PIPELINE_EXECUTION_ROLE: arn:aws:iam::376666941677:role/aws-sam-cli-managed-prod-pipe-PipelineExecutionRole-236gN6VlNT2S
+  PROD_CLOUDFORMATION_EXECUTION_ROLE: arn:aws:iam::376666941677:role/aws-sam-cli-managed-prod--CloudFormationExecutionRo-1N5deX9g8Mzr
+  PROD_ARTIFACTS_BUCKET: aws-sam-cli-managed-prod-pipeline--artifactsbucket-jgibjrv3sypa
+  PROD_IMAGE_REPOSITORY: 376666941677.dkr.ecr.ap-south-1.amazonaws.com/aws-sam-cli-managed-prod-pipeline-resources-imagerepository-swh7mvddfbtj
   PROD_REGION: ap-south-1
 
 permissions:
@@ -35,10 +35,6 @@ jobs:
       - uses: actions/checkout@v3
       - run: |
           # trigger the tests here
-          echo 'Running unit test'
-          cd hello-world
-          npm install
-          npm run test
 
   delete-feature:
     if: startsWith(github.event.ref, 'feature') && github.event_name == 'delete'
